@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap'); 
+
+* {
+
+font-family: Afacad Flux;
+}
+html {
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: rgba(59, 130, 246, 0.7) rgba(229, 231, 235, 0); /* thumb color, track color (transparent) */
+}
+
+/* For Webkit browsers */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(229, 231, 235, 0); /* Track color set to transparent */
+  border-radius: 10px; /* Rounded corners for the track */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(59, 130, 246, 0.7); /* Thumb color */
+  border-radius: 50px; /* Rounded corners for the thumb */
+  border: 2px solid rgba(229, 231, 235, 0); /* Space around the thumb, matching the transparent track */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(59, 130, 246, 1); /* Change thumb color on hover */
+}
+
+/* App container styles */
+.app-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Overlay for clicking outside of the menu */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Semi-transparent dark background */
+  z-index: 5;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+/* Sexy Menu Toggle Button */
+.menu-toggle-dragger {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background: linear-gradient(145deg, rgba(50, 50, 50, 0.95), rgba(30, 30, 30, 0.95));
+  color: white;
+  border: none;
+  cursor: pointer;
+  z-index: 100;
+  padding: 8px;
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0 4px 10px rgba(35, 93, 252, 0.4);
+  transition: left 0.5s ease, transform 0.3s ease, opacity 0.3s ease;
+  font-size: 1.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+}
+
+.menu-toggle-dragger.opened {
+  left: 300px;
+}
+
+.menu-toggle-dragger.hide-button {
+  opacity: 0; /* Button fades out when menu is open */
+}
+
+.menu-toggle-dragger.show-button {
+  opacity: 1;
+}
+
+.menu-toggle-dragger:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Smooth Menu Styling */
+.menu-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 80%;
+  max-width: 300px;
+  background: linear-gradient(145deg, rgba(36, 36, 36, 0.98), rgba(20, 20, 20, 0.98));
+  backdrop-filter: blur(10px);
+  transform: translateX(-100%);
+  transition: transform 0.5s cubic-bezier(0.75, 0.02, 0.26, 0.95), opacity 0.3s ease-in-out;
+  border-radius: 0 12px 12px 0;
+  z-index: 10;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(38, 183, 255, 0.464);
+  opacity: 0.95;
+}
+
+.menu-bar-open {
+  transform: translateX(0);
+}
+
+/* Header close button */
+.menu-bar-header .close-btn {
+  color: #fff;
+  font-size: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.menu-bar-header .close-btn:hover {
+  transform: rotate(90deg);
+}
+
+/* Menu list styles */
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  gap: 20px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  transform: translateX(-40px);
+  opacity: 0;
+}
+
+.menu-bar-open .menu-item {
+  animation: slideIn 0.4s ease forwards;
+}
+
+.menu-bar-open .menu-item:hover {
+  background: rgba(255, 0, 0, 0.1);
+  transform: scale(1.05);
+}
+
+/* Adding a subtle icon styling */
+.icon {
+  margin-right: 15px;
+  font-size: 1.6rem;
+  color: #bbb;
+}
+
+.menu-item:hover .icon {
+  color: #fff;
+}
+
+/* Keyframe animations */
+@keyframes slideIn {
+  from {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

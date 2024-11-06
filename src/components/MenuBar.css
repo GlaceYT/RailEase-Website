@@ -1,0 +1,131 @@
+/* Menu Container Styling */
+.menu-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 80%;
+  max-width: 300px;
+  background: linear-gradient(145deg, rgba(36, 36, 36, 0.9), rgba(24, 24, 24, 0.95));
+  backdrop-filter: blur(10px); /* Stronger blur for smoothness */
+  transform: translateX(-100%);
+  transition: transform 0.5s cubic-bezier(0.75, 0.02, 0.26, 0.95), background 0.5s ease;
+  border-radius: 0 20px 20px 0;
+  z-index: 10;
+  padding: 20px;
+}
+
+.menu-bar-open {
+  transform: translateX(0);
+  background: linear-gradient(145deg, rgba(24, 24, 24, 0.98), rgba(36, 36, 36, 0.9));
+}
+
+/* Header (Close Button) */
+.menu-bar-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #ffacac;
+  font-size: 2.5rem;
+  cursor: pointer;
+  transition: transform 0.4s ease, color 0.3s ease;
+}
+
+.close-btn:hover {
+  transform: rotate(180deg) scale(1.1); /* Double rotation for craziness */
+  color: #ffc6c6;
+}
+
+/* Menu List Styling */
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  gap: 20px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-radius: 12px;
+  color: #f5f5f5;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.4s ease, transform 0.4s ease, color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-bar-open .menu-item {
+  animation: slideIn 0.6s ease forwards;
+}
+
+.menu-bar-open .menu-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.menu-bar-open .menu-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.menu-bar-open .menu-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.menu-bar-open .menu-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* Icon Styling */
+.icon {
+  margin-right: 15px;
+  font-size: 1.8rem;
+  transition: color 0.3s ease;
+}
+
+.menu-item:hover .icon {
+  color: #5728ff; /* Make icons pop when hovering */
+}
+
+.menu-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.1) rotate(1deg); /* Subtle rotate effect for smoothness */
+  color: #007bff;
+}
+
+/* Crazy Underline Animation */
+.menu-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: #4ed9ff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.menu-item:hover::after {
+  transform: scaleX(1);
+  transform-origin: right;
+}
+
+/* Keyframes for Slide In */
+@keyframes slideIn {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
